@@ -5,9 +5,9 @@ test("partを渡すとヘッダーの配列が返される", () => {
 
 body`.replace(/\n/g, "\r\n");
 
-  expect(getHeaders(part)).toMatchObject([
-    { "content-disposition": 'form-data; name="field1"' },
-  ]);
+  expect(getHeaders(part)).toMatchObject({
+    "content-disposition": 'form-data; name="field1"',
+  });
 });
 
 test("ヘッダーがない場合、空配列が返される", () => {
@@ -15,5 +15,5 @@ test("ヘッダーがない場合、空配列が返される", () => {
   
   body`.replace(/\n/g, "\r\n");
 
-  expect(getHeaders(part)).toMatchObject([]);
+  expect(getHeaders(part)).toMatchObject({});
 });
