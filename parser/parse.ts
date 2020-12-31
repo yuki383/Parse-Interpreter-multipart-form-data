@@ -1,4 +1,5 @@
 import { splitToParts } from "./splitToParts";
+import { getHeaders } from "./getHeaders";
 
 type File = {
   fieldName: string;
@@ -7,7 +8,10 @@ type File = {
 
 export function parse(args: { boundary: string; body: string }) {
   const parts = splitToParts(args);
-  // const headers = getHeaders(body);
+  parts.map((part) => {
+    const headers = getHeaders(part);
+    const bodyPart = getBody(part);
+  });
 }
 
 function getBody(part: string) {
