@@ -3,7 +3,6 @@ import { getHeaders } from "./getHeaders";
 import { getBody } from "./getBody";
 import { parseContentDisposition } from "./parseContentDisposition";
 
-// TODO: bodyがBufferの場合にもパースできるようにする
 export function parse(args: { boundary: string; body: string }) {
   const parts = splitToParts(args);
   return parts.map((part) => {
