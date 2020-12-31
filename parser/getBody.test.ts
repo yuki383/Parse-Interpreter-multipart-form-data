@@ -9,6 +9,7 @@ body
   expect(getBody(part)).toBe("body\r\n");
 });
 
+// TODO: multipart/form-dataはContent-DispositionがMUSTなのでヘッダーがない場合はない
 test("headerがない場合もbodyを返す", () => {
   const part = `
 body
