@@ -1,8 +1,4 @@
 export function getHeaders(part: string) {
-  if (part.startsWith("\r\n")) {
-    return {};
-  }
-
   const [headerField] = part.split("\r\n\r\n");
 
   return headerField

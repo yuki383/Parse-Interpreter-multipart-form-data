@@ -14,15 +14,3 @@ export function splitToParts({
 
   return parts.slice(1, parts.length).map((part) => part.replace("\r\n", ""));
 }
-
-function getHeaders(part: string) {
-  if (part.startsWith("\r\n\r\n")) {
-    return [];
-  }
-  const splitted = part.trim().split("\r\n");
-
-  const delimiterIndex = splitted.findIndex((row) => row === "");
-  return splitted
-    .slice(0, delimiterIndex)
-    .map((part) => part.replace("\r\n", ""));
-}

@@ -12,18 +12,15 @@ content-type: text/plain
 
 Hello World.
 
---${boundary}
-
-No Header
 --${boundary}--`.replace(/\n/g, "\r\n");
 
   const result = splitToParts({ boundary, body });
 
   test("デリミタで区切られたpartを配列にする", () => {
-    expect(splitToParts({ boundary, body }).length).toBe(3);
+    expect(splitToParts({ boundary, body }).length).toBe(2);
   });
 
-  describe("先頭・末尾にCRLF付加されない", () => {
+  describe("先頭・末尾にCRLFが付加されない", () => {
     test("body partがCRLFで終わらない場合、両端にCRLFが存在しない", () => {
       expect(result[0]).toBe(
         'content-disposition: form-data; name="field1"\r\n\r\nhere is body.'
@@ -35,9 +32,5 @@ No Header
         'content-disposition: form-data; name="field2"; filename="test.txt"\r\ncontent-type: text/plain\r\n\r\nHello World.\r\n'
       );
     });
-  });
-
-  test("ヘッダーがない場合partはCRLFから始まる", () => {
-    expect(result[2]).toBe("\r\nNo Header");
   });
 });
