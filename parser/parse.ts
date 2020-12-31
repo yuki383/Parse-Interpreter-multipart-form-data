@@ -1,5 +1,6 @@
 import { splitToParts } from "./splitToParts";
 import { getHeaders } from "./getHeaders";
+import { getBody } from "./getBody";
 
 type File = {
   fieldName: string;
@@ -12,10 +13,6 @@ export function parse(args: { boundary: string; body: string }) {
     const headers = getHeaders(part);
     const bodyPart = getBody(part);
   });
-}
-
-function getBody(part: string) {
-  const splitted = part.split("\r\n");
 }
 
 const example = `Header: hogefuga
